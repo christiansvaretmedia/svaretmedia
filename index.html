@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Svaret Media</title>
+  <meta name="description" content="Svaret Media er et digitalt mediebyrå i Bergen. Vi hjelper ambisiøse merkevarer med nettsider, betalt reklame, SEO og video & foto som gir resultater." />
+  <meta property="og:title" content="Svaret Media" />
+  <meta property="og:description" content="Svaret Media er et digitalt mediebyrå i Bergen. Vi hjelper ambisiøse merkevarer med nettsider, betalt reklame, SEO og video & foto som gir resultater." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='black'/><text x='50' y='73' font-family='Inter,sans-serif' font-size='62' font-weight='700' fill='white' text-anchor='middle'>S</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #000000;
+      --dark: #1A1A1A;
+      --white: #FFFFFF;
+      --accent: #E5E5E5;
+      --font: 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LOGO ── */
+    .logo {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0;
+      text-decoration: none;
+    }
+
+    .logo-text {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35em;
+      color: var(--black);
+    }
+
+    .logo-svaret {
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .logo-media {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo-line {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: var(--black);
+      margin-top: 4px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--accent);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.4;
+    }
+
+    .nav-cta {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--black);
+      padding: 0.6rem 1.4rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.75;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--black);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 65px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--accent);
+      padding: 2rem;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 99;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 2rem 4rem;
+      background: var(--white);
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      opacity: 0.4;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-heading {
+      font-size: clamp(2.8rem, 8vw, 7rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      max-width: 900px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-heading em {
+      font-style: normal;
+      font-weight: 300;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      max-width: 480px;
+      color: var(--dark);
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--black);
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.7;
+    }
+
+    .btn-secondary {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: transparent;
+      border: 1px solid var(--black);
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .hero-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      margin-top: 4rem;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 1rem;
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading em {
+      font-style: normal;
+      font-weight: 300;
+    }
+
+    .section-text {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 560px;
+      color: var(--dark);
+    }
+
+    /* ── TJENESTER ── */
+    #tjenester {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    #tjenester .section-heading {
+      color: var(--white);
+    }
+
+    #tjenester .section-label {
+      color: var(--white);
+    }
+
+    #tjenester .section-text {
+      color: var(--accent);
+    }
+
+    .tjenester-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0;
+      margin-top: 4rem;
+      border-top: 1px solid #333;
+    }
+
+    .tjeneste-item {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid #333;
+      padding-right: 2rem;
+    }
+
+    .tjeneste-number {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .tjeneste-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .tjeneste-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #999;
+      line-height: 1.7;
+    }
+
+    /* ── OM OSS ── */
+    #om {
+      background: var(--white);
+    }
+
+    .om-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .om-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .stat-item {
+      border-top: 1px solid var(--black);
+      padding-top: 1.5rem;
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #666;
+      margin-top: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 8rem 2rem;
+    }
+
+    #cta .section-label {
+      color: #666;
+    }
+
+    #cta .section-heading {
+      color: var(--white);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    #cta .section-text {
+      color: #999;
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--white);
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+
+    .btn-white:hover {
+      opacity: 0.8;
+    }
+
+    .btn-ghost {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: transparent;
+      border: 1px solid #444;
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover {
+      border-color: #888;
+    }
+
+    /* ── KONTAKT ── */
+    #kontakt {
+      background: var(--white);
+    }
+
+    .kontakt-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      margin-top: 3rem;
+    }
+
+    .kontakt-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .kontakt-info-item {
+      border-top: 1px solid var(--accent);
+      padding-top: 1.25rem;
+    }
+
+    .kontakt-info-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 0.4rem;
+    }
+
+    .kontakt-info-value {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .kontakt-info-value:hover {
+      opacity: 0.5;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    input, textarea {
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--black);
+      background: var(--white);
+      border: 1px solid var(--accent);
+      padding: 0.9rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--black);
+    }
+
+    textarea {
+      min-height: 130px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      color: #666;
+      padding: 2.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer .logo-svaret { color: var(--white); }
+    footer .logo-media { color: var(--white); }
+    footer .logo-line { background: #333; }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1.1rem 1.25rem;
+      }
+
+      .nav-links, .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      #hero {
+        padding: 7rem 1.25rem 3rem;
+      }
+
+      section {
+        padding: 4rem 1.25rem;
+      }
+
+      .om-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .kontakt-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1.25rem;
+      }
+
+      #cta {
+        padding: 5rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="logo">
+      <div class="logo-text">
+        <span class="logo-svaret">Svaret</span>
+        <span class="logo-media">Media</span>
+      </div>
+      <span class="logo-line"></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#tjenester">Tjenester</a></li>
+      <li><a href="#om">Om oss</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="#kontakt" class="nav-cta">Kom i gang</a>
+    <button class="hamburger" id="hamburger" aria-label="Meny">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBIL MENY -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#tjenester" onclick="closeMobile()">Tjenester</a>
+    <a href="#om" onclick="closeMobile()">Om oss</a>
+    <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
+    <a href="#kontakt" class="btn-primary" onclick="closeMobile()">Kom i gang</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-label">Mediebyrå · Strategi · Innhold</p>
+    <h1 class="hero-heading">Vi forteller <em>historiene</em> som gir resultater.</h1>
+    <p class="hero-sub">Svaret Media hjelper ambisiøse merkevarer med å kommunisere klart, se bra ut og bli husket.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Snakk med oss</a>
+      <a href="#tjenester" class="btn-secondary">Se tjenester</a>
+    </div>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- TJENESTER -->
+  <section id="tjenester">
+    <p class="section-label">Hva vi gjør</p>
+    <h2 class="section-heading">Tjenester bygget <em>for vekst</em>.</h2>
+    <p class="section-text">Vi kombinerer strategi, innhold og design for å løfte merkevaren din fra god til uforglemmelig.</p>
+    <div class="tjenester-grid">
+      <div class="tjeneste-item">
+        <p class="tjeneste-number">01</p>
+        <h3 class="tjeneste-title">Nettsider</h3>
+        <p class="tjeneste-desc">En nettside skal ikke bare se bra ut — den skal selge. Vi bygger nettsider som konverterer besøkende til betalende kunder.</p>
+      </div>
+      <div class="tjeneste-item">
+        <p class="tjeneste-number">02</p>
+        <h3 class="tjeneste-title">Betalt reklame</h3>
+        <p class="tjeneste-desc">Vi plasserer budskapet ditt foran de som faktisk vil kjøpe. Målrettet annonsering på Meta, Google og TikTok — med resultater du kan måle.</p>
+      </div>
+      <div class="tjeneste-item">
+        <p class="tjeneste-number">03</p>
+        <h3 class="tjeneste-title">SEO</h3>
+        <p class="tjeneste-desc">Bli funnet av kundene som allerede leter etter det du tilbyr — før de finner konkurrenten din. Vi sørger for at du er der når det gjelder.</p>
+      </div>
+      <div class="tjeneste-item">
+        <p class="tjeneste-number">04</p>
+        <h3 class="tjeneste-title">Video & foto</h3>
+        <p class="tjeneste-desc">Profesjonelt visuelt innhold som gir merkevaren din troverdighet, øker engasjement og gjør at du skiller deg ut — i alle kanaler.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OM OSS -->
+  <section id="om">
+    <p class="section-label">Om oss</p>
+    <div class="om-layout">
+      <div>
+        <h2 class="section-heading">Vi er Svaret. <em>Ikke et nytt spørsmål.</em></h2>
+        <p class="section-text">Svaret Media er et norsk mediebyrå som jobber med merkevarer som vil mer. Vi tror på enkel kommunikasjon, sterk visuell identitet og innhold som faktisk skaper verdi — ikke bare støy.</p>
+        <br />
+        <p class="section-text">Svaret Media er bygget på én enkel overbevisning: at god markedsføring handler om å forstå mennesker, ikke bare algoritmer. Vi har bakgrunn fra digital markedsføring og bruker den erfaringen til å lage innhold som faktisk treffer.</p>
+      </div>
+      <div class="om-stats">
+        <div class="stat-item">
+          <p class="stat-number">Nysgjerrige</p>
+          <p class="stat-label">Vi graver til vi forstår bedre enn deg hva kundene dine vil ha</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">Direkte</p>
+          <p class="stat-label">Ingen unødvendige møter. Vi leverer, du vokser</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">Selektive</p>
+          <p class="stat-label">Vi tar ikke alle kunder — bare de vi faktisk kan hjelpe</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">Partner, ikke leverandør</p>
+          <p class="stat-label">Vi investerer i suksessen din like mye som du gjør</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <p class="section-label">Klar til å starte?</p>
+    <h2 class="section-heading">La oss finne svaret — sammen.</h2>
+    <p class="section-text">Book en uforpliktende samtale med oss. Vi lytter, stiller de riktige spørsmålene og kommer tilbake med en konkret plan.</p>
+    <div class="cta-actions">
+      <a href="#kontakt" class="btn-white">Book en samtale</a>
+      <a href="mailto:kontakt@svaretmedia.no" class="btn-ghost">Send en e-post</a>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt">
+    <p class="section-label">Kontakt</p>
+    <h2 class="section-heading">Si hei.</h2>
+    <div class="kontakt-layout">
+      <div class="kontakt-info">
+        <p class="section-text">Vi svarer innen én arbeidsdag. Fortell oss gjerne litt om prosjektet ditt — så er vi forberedt når vi snakkes.</p>
+        <div>
+          <div class="kontakt-info-item">
+            <p class="kontakt-info-label">E-post</p>
+            <a href="mailto:kontakt@svaretmedia.no" class="kontakt-info-value">kontakt@svaretmedia.no</a>
+          </div>
+          <div class="kontakt-info-item">
+            <p class="kontakt-info-label">Telefon</p>
+            <a href="tel:+4797641540" class="kontakt-info-value">+47 976 41 540</a>
+          </div>
+          <div class="kontakt-info-item">
+            <p class="kontakt-info-label">Lokasjon</p>
+            <p class="kontakt-info-value">Bergen, Norge</p>
+          </div>
+        </div>
+      </div>
+      <form action="https://formspree.io/f/mwvyvlve" method="POST">
+        <div class="form-group">
+          <label for="navn">Navn</label>
+          <input type="text" id="navn" name="navn" placeholder="Ditt navn" required />
+        </div>
+        <div class="form-group">
+          <label for="epost">E-post</label>
+          <input type="email" id="epost" name="epost" placeholder="din@epost.no" required />
+        </div>
+        <div class="form-group">
+          <label for="melding">Melding</label>
+          <textarea id="melding" name="melding" placeholder="Fortell oss om prosjektet ditt..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send melding</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#hero" class="logo">
+      <div class="logo-text">
+        <span class="logo-svaret">Svaret</span>
+        <span class="logo-media">Media</span>
+      </div>
+      <span class="logo-line"></span>
+    </a>
+    <p class="footer-copy">© 2026 Svaret Media. Alle rettigheter forbeholdt.</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+    }
+
+  </script>
+</body>
+</html>
