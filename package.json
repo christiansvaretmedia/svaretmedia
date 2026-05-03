@@ -1,0 +1,23 @@
+{
+  "name": "svaretmedia",
+  "version": "1.0.0",
+  "description": "Svaret Media - Digital media agency website",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests configured\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christiansvaretmedia/svaretmedia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christiansvaretmedia/svaretmedia/issues"
+  },
+  "homepage": "https://github.com/christiansvaretmedia/svaretmedia#readme",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
