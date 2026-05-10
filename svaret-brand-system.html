@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<title>Svaret Media — Brand System</title>
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --paper: #F2EFE8;
+    --ink: #0a0a0a;
+    --ink-soft: #2a2a28;
+    --muted: #6b6b66;
+    --line: #e6e4dd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Helvetica Neue', 'Inter', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 1280px; margin: 0 auto; padding: 80px 60px; }
+  header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 48px; border-bottom: 1px solid var(--line); margin-bottom: 80px; }
+  .eyebrow { font-size: 12px; letter-spacing: 4px; font-weight: 600; color: var(--muted); }
+  h2.section { font-size: 14px; letter-spacing: 4px; font-weight: 600; color: var(--muted); margin-bottom: 28px; text-transform: uppercase; }
+  .grid { display: grid; gap: 24px; margin-bottom: 96px; }
+  .grid.cols-2 { grid-template-columns: 1.4fr 1fr; }
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .panel { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 56px; display: flex; align-items: center; justify-content: center; min-height: 280px; position: relative; }
+  .panel.dark { background: var(--ink); }
+  .panel .tag { position: absolute; top: 18px; left: 22px; font-size: 11px; letter-spacing: 3px; color: var(--muted); font-weight: 600; }
+  .panel.dark .tag { color: #888; }
+
+  /* The signature rule — clean horizontal line, no terminal ticks */
+  .sig-rule { position: relative; height: 14px; margin: 8px 0 14px; }
+  .sig-rule::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1.5px; background: var(--ink); transform: translateY(-50%); }
+
+  .panel.dark .sig-rule::before { background: var(--bg); }
+
+  /* Wordmark — primary stacked */
+  .wm-primary { text-align: left; }
+  .wm-primary .word { font-weight: 900; font-size: 64px; letter-spacing: -2px; line-height: 1; color: var(--ink); }
+  .wm-primary .label { font-size: 56px; letter-spacing: 6px; font-weight: 500; line-height: 1; }
+
+  .panel.dark .wm-primary .word { color: var(--bg); }
+  .panel.dark .wm-primary .label { color: var(--bg); }
+
+  /* Mark / icon */
+  .mark-tile { width: 160px; height: 160px; border-radius: 28%; background: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; position: relative; }
+  .mark-tile .s { font-size: 110px; font-weight: 900; color: var(--bg); letter-spacing: -3px; line-height: 0.85; }
+  .mark-tile .rule { width: 70px; height: 1.5px; background: var(--bg); }
+  .mark-tile.light { background: var(--bg); border: 1px solid var(--line); }
+  .mark-tile.light .s { color: var(--ink); }
+  .mark-tile.light .rule { background: var(--ink); }
+  .mark-tile.paper { background: var(--paper); }
+  .mark-tile.paper .s { color: var(--ink); }
+  .mark-tile.paper .rule { background: var(--ink); }
+
+  /* Color swatches — fully monochrome */
+  .swatch { aspect-ratio: 1.4 / 1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); }
+  .swatch .name { font-size: 12px; letter-spacing: 2px; font-weight: 600; }
+  .swatch .hex { font-size: 12px; font-family: 'SF Mono', Menlo, monospace; }
+  .swatch.ink { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .swatch.soft { background: var(--ink-soft); color: var(--bg); border-color: var(--ink-soft); }
+  .swatch.bg { background: var(--bg); }
+  .swatch.paper { background: var(--paper); }
+  .swatch.muted { background: var(--muted); color: var(--bg); border-color: var(--muted); }
+
+  /* Typography spec */
+  .type-spec { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 32px; border: 1px solid var(--line); border-radius: 8px; background: #fff; align-items: center; }
+  .type-spec .meta .label { font-size: 11px; letter-spacing: 3px; color: var(--muted); font-weight: 600; }
+  .type-spec .meta h3 { font-size: 18px; margin-top: 4px; font-weight: 600; }
+  .type-spec .meta p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .type-spec .preview-display { font-size: 56px; font-weight: 900; letter-spacing: -2px; }
+  .type-spec .preview-label { font-size: 40px; letter-spacing: 4px; font-weight: 500; }
+
+  /* App icon mockup */
+  .iphone { width: 200px; height: 410px; border-radius: 32px; background: linear-gradient(180deg, #2a2a28 0%, #1a1a18 100%); padding: 14px; box-shadow: 0 24px 48px rgba(0,0,0,0.18); }
+  .iphone-screen { width: 100%; height: 100%; border-radius: 22px; background: #f3f1ec; padding: 30px 16px 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; position: relative; overflow: hidden; }
+  .notch { width: 70px; height: 18px; border-radius: 0 0 12px 12px; background: #1a1a18; position: absolute; top: 0; left: 50%; transform: translateX(-50%); }
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; width: 100%; }
+  .app-icon { aspect-ratio: 1; border-radius: 16px; }
+  .app-icon.svaret { background: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; position: relative; }
+  .app-icon.svaret .s { color: var(--bg); font-weight: 900; font-size: 32px; letter-spacing: -1px; line-height: 0.85; }
+  .app-icon.svaret .mini-rule { width: 22px; height: 1px; background: var(--bg); }
+  .app-icon.placeholder { background: linear-gradient(135deg, #d8d4cb 0%, #c4bfb3 100%); }
+  .app-icon.placeholder.b { background: linear-gradient(135deg, #b6c2c4 0%, #9bafb0 100%); }
+  .app-icon.placeholder.c { background: linear-gradient(135deg, #d6c2b6 0%, #b89e8a 100%); }
+  .app-icon.placeholder.d { background: linear-gradient(135deg, #c8c8b8 0%, #9e9e8a 100%); }
+  .app-name { font-size: 9px; text-align: center; margin-top: -4px; }
+
+  /* Business card */
+  .card { width: 360px; height: 210px; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+  .card.back { background: var(--ink); }
+  .card .small-mark .word { font-size: 24px; font-weight: 900; letter-spacing: -1px; color: var(--ink); }
+  .card .small-mark .mini-rule { width: 90px; height: 1px; background: var(--ink); margin: 5px 0; }
+  .card .small-mark .label { font-size: 14px; letter-spacing: 2px; font-weight: 500; color: var(--ink); }
+  .card .name { font-size: 18px; font-weight: 700; color: var(--ink); margin-top: auto; }
+  .card .role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .card .contact { font-size: 10px; color: var(--muted); margin-top: 12px; line-height: 1.6; }
+  .card.back .center { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 8px; }
+  .card.back .big-s { font-size: 78px; font-weight: 900; color: var(--bg); letter-spacing: -3px; line-height: 0.85; }
+  .card.back .mini-rule { width: 60px; height: 1.5px; background: var(--bg); }
+  .card.back .label { font-size: 12px; letter-spacing: 2px; color: var(--bg); margin-top: 4px; font-weight: 500; }
+
+  /* Article header */
+  .article { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 48px; }
+  .article .top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--line); margin-bottom: 32px; }
+  .article .top .small-mark { display: flex; align-items: center; gap: 12px; }
+  .article .top .small-mark .word { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
+  .article .top .small-mark .label { font-size: 13px; letter-spacing: 2px; color: var(--muted); font-weight: 600; }
+  .article .top nav { font-size: 12px; letter-spacing: 2px; color: var(--muted); font-weight: 600; display: flex; gap: 24px; }
+  .article .kicker { font-size: 11px; letter-spacing: 3px; color: var(--ink); font-weight: 700; }
+  .article h1 { font-size: 38px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-top: 12px; max-width: 700px; }
+  .article .lede { font-size: 15px; color: var(--muted); margin-top: 16px; line-height: 1.6; max-width: 600px; }
+
+  /* Concept */
+  .concept { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .concept h3 { font-size: 22px; font-weight: 700; }
+  .concept p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-top: 12px; }
+  .concept-mark { display: flex; flex-direction: column; align-items: flex-start; }
+  .concept-mark .word { font-size: 110px; font-weight: 900; letter-spacing: -4px; line-height: 0.95; }
+  .concept-mark .sig { width: 100%; }
+  .concept-mark .label { font-size: 56px; letter-spacing: 26px; font-weight: 500; line-height: 1; }
+
+  footer { padding-top: 48px; border-top: 1px solid var(--line); margin-top: 32px; display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); letter-spacing: 2px; }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font-size:24px;font-weight:900;letter-spacing:-1px">Svaret</span>
+        <div style="width:50px;height:8px;position:relative">
+          <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--ink);transform:translateY(-50%)"></div>
+          <div style="position:absolute;right:0;top:0;bottom:0;width:1px;background:var(--ink)"></div>
+          <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--ink)"></div>
+        </div>
+        <span style="font-size:11px;letter-spacing:6px;font-weight:500">MEDIA</span>
+      </div>
+      <div class="eyebrow">BRAND SYSTEM · v2.0 · 2026</div>
+    </header>
+
+    <!-- CONCEPT -->
+    <section class="concept" style="margin-bottom: 96px;">
+      <div>
+        <div class="eyebrow">KONSEPT</div>
+        <h3 style="margin-top: 12px;">Streken er signaturen.</h3>
+        <p>I redaksjonelt språk er den horisontale streken mellom topp og kropp et tegn på autoritet — masthead-en. Her får den små vertikale terminaler ytterst i hver ende: en typografs målepinne. Det er bjelken som binder "Svaret" til "MEDIA", og som gjentas i alle berøringspunkter — fra app-ikon til visittkort.</p>
+        <p>Vekten mellom de to ordene er finkalibrert: Svaret er marginalt mer dominerende, men begge bærer lockup-en sammen.</p>
+      </div>
+      <div class="concept-mark">
+        <div class="word">Svaret</div>
+        <div class="sig">
+          <div class="sig-rule"><div class="left-tick"></div></div>
+        </div>
+        <div class="label">MEDIA</div>
+      </div>
+    </section>
+
+    <!-- PRIMARY LOGO -->
+    <h2 class="section">Primært ordmerke</h2>
+    <div class="grid cols-2">
+      <div class="panel">
+        <span class="tag">PRIMARY · LIGHT</span>
+        <div class="wm-primary">
+          <div class="word">Svaret</div>
+          <div class="sig-rule"><div class="left-tick"></div></div>
+          <div class="label">MEDIA</div>
+        </div>
+      </div>
+      <div class="panel dark">
+        <span class="tag">PRIMARY · DARK</span>
+        <div class="wm-primary">
+          <div class="word" style="color:#FAFAF7">Svaret</div>
+          <div class="sig-rule"><div class="left-tick"></div></div>
+          <div class="label" style="color:#FAFAF7">MEDIA</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARK -->
+    <h2 class="section">Sekundærmerke / Ikon</h2>
+    <div class="grid cols-3">
+      <div class="panel">
+        <span class="tag">MARK · DARK</span>
+        <div class="mark-tile">
+          <span class="s">S</span>
+          <div class="rule"><div class="lt"></div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <span class="tag">MARK · LIGHT</span>
+        <div class="mark-tile light">
+          <span class="s">S</span>
+          <div class="rule"><div class="lt"></div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <span class="tag">MARK · PAPER</span>
+        <div class="mark-tile paper">
+          <span class="s">S</span>
+          <div class="rule"><div class="lt"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PALETTE — fully monochrome -->
+    <h2 class="section">Fargepalett</h2>
+    <div class="grid cols-4">
+      <div class="swatch ink">
+        <div class="name">INK</div>
+        <div class="hex">#0A0A0A</div>
+      </div>
+      <div class="swatch soft">
+        <div class="name">CHARCOAL</div>
+        <div class="hex">#2A2A28</div>
+      </div>
+      <div class="swatch paper">
+        <div class="name">PAPER</div>
+        <div class="hex">#F2EFE8</div>
+      </div>
+      <div class="swatch bg">
+        <div class="name">BONE</div>
+        <div class="hex">#FAFAF7</div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <h2 class="section">Typografi</h2>
+    <div style="display:grid;gap:16px;margin-bottom:96px">
+      <div class="type-spec">
+        <div class="meta">
+          <div class="label">DISPLAY</div>
+          <h3>Helvetica Neue Black</h3>
+          <p>Tett sperring, -3% letter-spacing</p>
+        </div>
+        <div class="preview-display">Svaret</div>
+      </div>
+      <div class="type-spec">
+        <div class="meta">
+          <div class="label">LABEL</div>
+          <h3>Helvetica Neue Medium</h3>
+          <p>Versaler, sperret 0.9em — bærer omtrent samme visuelle vekt som "Svaret"</p>
+        </div>
+        <div class="preview-label">MEDIA</div>
+      </div>
+    </div>
+
+    <!-- APPLICATIONS -->
+    <h2 class="section">Bruksområder</h2>
+    <div class="grid cols-2" style="grid-template-columns: 1fr 1fr;">
+      <!-- App icon -->
+      <div class="panel" style="background:#f3f1ec">
+        <span class="tag">APP-IKON</span>
+        <div class="iphone">
+          <div class="iphone-screen">
+            <div class="notch"></div>
+            <div style="font-size:9px;letter-spacing:2px;color:#888;margin-top:18px">9:41</div>
+            <div class="icon-grid">
+              <div><div class="app-icon svaret"><span class="s">S</span><div class="mini-rule"><div class="lt"></div></div></div><div class="app-name">Svaret</div></div>
+              <div><div class="app-icon placeholder"></div><div class="app-name">Foto</div></div>
+              <div><div class="app-icon placeholder b"></div><div class="app-name">Kart</div></div>
+              <div><div class="app-icon placeholder c"></div><div class="app-name">Vær</div></div>
+              <div><div class="app-icon placeholder d"></div><div class="app-name">Notater</div></div>
+              <div><div class="app-icon placeholder b"></div><div class="app-name">Musikk</div></div>
+              <div><div class="app-icon placeholder c"></div><div class="app-name">Mail</div></div>
+              <div><div class="app-icon placeholder"></div><div class="app-name">Sport</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business cards -->
+      <div class="panel" style="background:#f3f1ec;flex-direction:column;gap:24px">
+        <span class="tag">VISITTKORT</span>
+        <div class="card">
+          <div class="small-mark">
+            <div class="word">Svaret</div>
+            <div class="mini-rule"><div class="lt"></div></div>
+            <div class="label">MEDIA</div>
+          </div>
+          <div>
+            <div class="name">Christian Mortensen</div>
+            <div class="role">Grunnlegger / Redaktør</div>
+            <div class="contact">kontakt@svaretmedia.no<br>+47 ·· ·· ·· ··</div>
+          </div>
+        </div>
+        <div class="card back">
+          <div class="center">
+            <div class="big-s">S</div>
+            <div class="mini-rule"><div class="lt"></div></div>
+            <div class="label">SVARET MEDIA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article header use -->
+    <div class="article" style="margin-bottom: 96px;">
+      <div class="top">
+        <div class="small-mark">
+          <div class="word">Svaret</div>
+          <div style="width:36px;height:6px;position:relative">
+            <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--ink);transform:translateY(-50%)"></div>
+            <div style="position:absolute;right:0;top:0;bottom:0;width:1px;background:var(--ink)"></div>
+            <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--ink)"></div>
+          </div>
+          <div class="label">MEDIA</div>
+        </div>
+        <nav>NYHETER · KULTUR · ANALYSE · OM</nav>
+      </div>
+      <div class="kicker">FORSIDE · ANALYSE</div>
+      <h1>Et nytt blikk på det norske medielandskapet i 2026.</h1>
+      <p class="lede">Slik fungerer logoen i en redaksjonell kontekst — den lille bjelken med terminale tikk-merker fungerer som en visuell signatur og gir lockup-en rytme uten farge.</p>
+    </div>
+
+    <footer>
+      <div>SVARET MEDIA · BRAND SYSTEM</div>
+      <div>2026 ·</div>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" width="1400" height="700">
+  <rect width="1400" height="700" fill="#FAFAF7"/>
+
+  <!-- Editorial eyebrow -->
+  <line x1="280" y1="220" x2="368" y2="220" stroke="#0a0a0a" stroke-width="1.5"/>
+  <text x="383" y="226"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="600"
+        font-size="16"
+        letter-spacing="6"
+        fill="#0a0a0a">EST · BERGEN · MMXXVI</text>
+
+  <!-- SVARET wordmark -->
+  <text x="280" y="395"
+        font-family="'Helvetica Neue', 'Inter', Arial, sans-serif"
+        font-weight="900"
+        font-size="150"
+        letter-spacing="-5"
+        fill="#0a0a0a">Svaret</text>
+
+  <!-- Single horizontal rule, no terminal ticks -->
+  <line x1="280" y1="430" x2="800" y2="430" stroke="#0a0a0a" stroke-width="1.8"/>
+
+  <!-- MEDIA — tighter letter-spacing -->
+  <text x="282" y="525"
+        font-family="'Helvetica Neue', 'Inter', Arial, sans-serif"
+        font-weight="500"
+        font-size="92"
+        letter-spacing="10"
+        fill="#0a0a0a">MEDIA</text>
+</svg>

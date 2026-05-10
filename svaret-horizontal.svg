@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 400" width="1400" height="400">
+  <rect width="1400" height="400" fill="#FAFAF7"/>
+
+  <!-- Mark on the left -->
+  <rect x="120" y="120" width="160" height="160" fill="#0a0a0a" rx="4"/>
+  <text x="200" y="225"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="900"
+        font-size="120"
+        letter-spacing="-4"
+        text-anchor="middle"
+        fill="#FAFAF7">S</text>
+  <line x1="155" y1="245" x2="245" y2="245" stroke="#FAFAF7" stroke-width="1.5"/>
+
+  <!-- Wordmark -->
+  <text x="330" y="218"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="900"
+        font-size="92"
+        letter-spacing="-3"
+        fill="#0a0a0a">Svaret</text>
+
+  <line x1="332" y1="238" x2="650" y2="238" stroke="#0a0a0a" stroke-width="1.5"/>
+
+  <text x="332" y="293"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="500"
+        font-size="50"
+        letter-spacing="6"
+        fill="#0a0a0a">MEDIA</text>
+</svg>
